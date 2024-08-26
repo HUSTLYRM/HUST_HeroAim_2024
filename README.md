@@ -1,4 +1,4 @@
-![](./asset/cover.PNG)
+![](./asset/cover.jpg)
 <div align="center" float="left">
 <a href="https://www.robomaster.com/zh-CN">
 <img src="./asset/RoboMaster-mecha-logo.png" width=25% />
@@ -7,12 +7,12 @@
 <img src="./asset/hustlyrm.png" width=25% />
 </div>
 <br>
-<center>
+<div align="center">
 <b>华中科技大学 狼牙战队 视觉组</b>
-</center>
+ </div>
 
 ## 效果展示 🎥
-<center>
+<div align="center">
 <h4>
 全国赛效果
 </h4>
@@ -27,7 +27,7 @@
 
 国赛全程视频：
 [【沉浸式辅瞄前哨站 | B站】](https://www.bilibili.com/video/BV1ubYueDEk9/)
-</center>
+</div>
 
 ## 功能简介 🔎
 
