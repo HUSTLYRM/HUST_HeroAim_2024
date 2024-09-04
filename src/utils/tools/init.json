@@ -1,0 +1,134 @@
+{
+  "#camera": "包括 设备类型(0代表大恒相机), sn码(相机的唯一识别码), video_path(内录视频的保存地址), picture_path(内录装甲板图片的保存地址), size(图片的大小)",
+  "camera": {
+    "device_type": 0,
+    "sn": "FDN*********",
+    "video_path": "../src/utils/data/videos/red7.avi",
+    "picture_path": "../src/utils/data/pictures/armors/",
+    "size": {
+      "height": 1024,
+      "width": 1280
+    },
+    "#camera_type": "8 代表指定使用8mm的相机, 其余值表示普通相机",
+    "camera_type": 8,
+    "camera_param": {
+      "fx": 1673.1,
+      "fy": 1680.0,
+      "u0": 626.7651,
+      "v0": 520.1696,
+      "k1": -0.0630,
+      "k2": 0.2060,
+      "k3": 0,
+      "p1": 0,
+      "p2": 0,
+      "exposure_time": 10000,
+      "gain": 24,
+      "gamma": 2.5
+    },
+    "#camera_8mm_param": " 8mm相机的配置, 包括了相机标定的内参外参以及曝光增益(快速调车适应光照主要调曝光),  exposure_time 7000-9000   gain 16 , 白天对于打前哨站来说效果更好，可以范围更大",
+    "camera_8mm_param": {
+      "fx": 2298.9,
+      "fy": 2305.1,
+      "u0": 755.3388,
+      "v0": 557.0246,
+      "k1": -0.0722,
+      "k2": 0.1618,
+      "k3": 0,
+      "p1": 0,
+      "p2": 0,
+      "exposure_time": 10000,
+      "gain": 24,
+      "yaw": 0.60,
+      "pitch": -4.40,
+      "roll": 0,
+      "gamma": 2.5
+    },
+    "#camera_trans": "平移向量, 需要机械的同学根据图纸得到(相机坐标系 相对于 枪管基坐标系的偏移，单位m ",
+    "camera_trans": {
+      "x": 0.000,
+      "y": 0,
+      "z": 0.126,
+      "#x": -0.0044,
+      "#y": 0.16002,
+      "#z": 0
+    }
+  },
+  "#serialport": "串口信息, 不需要更改，串口号/dev/ttyUSB0 ",
+  "serialport": {
+    "enable": 1,
+    "deviceName": "/dev/ttyACM0"
+  },
+  "#detector": "TODO: 检测器参数, 主要调thresh, 注意color不需要调, color是通过串口读到的, 一般不需要调 ",
+  "detector": {
+    "color": "red",
+    "thresh": 70,
+    "#filter_params": "卡尔曼滤波参数, 主要调整下面的 3 个 process_noise_pose ",
+    "filter_params": {
+      "measurement_noise_pose_x": 200,
+      "measurement_noise_pose_y": 10,
+      "measurement_noise_pose_z": 1,
+      "process_noise_pose_x": 1,
+      "process_noise_pose_y": 1,
+      "process_noise_pose_z": 1,
+      "process_noise_q4_w": 1,
+      "process_noise_q4_x": 1,
+      "process_noise_q4_y": 1,
+      "process_noise_q4_z": 1,
+      "stf_beta": 2,
+      "is_use_stf": false,
+      "is_use_singer": false,
+      "is_use_ca_model": false,
+      "alpha": 0.7,
+      "max_a_x": 2,
+      "max_a_y": 10,
+      "max_a_z": 0.1
+    }
+  },
+  "#predictor": "TODO: 预测器参数, 主要调整误差项等内容, 还是内置的, 后续调整到配置文件中",
+  "predictor": {
+    "Q": "以下为系统误差的相关参数",
+    "x_n": 5e-3,
+    "z_n": 5e-3,
+    "x_v": 1e-3,
+    "z_v": 1e-3,
+    "x_a": 1e-3,
+    "z_a": 5e-4,
+    "R": "以下为测量误差的相关参数",
+    "x_m": 1e-2,
+    "z_m": 5e-4
+  },
+  "#classifire": "不需要调(不起作用)",
+  "classifier": {
+    "model": "CNN"
+  },
+  "outpost": {
+
+    "#ratio": "判定二维图像上的中心的比例, 当然应该是越小越准, 目前中心点测不准，需要看一下",
+    "pixel_center_ratio": 0.35,
+    "#pitch_bias": "pitch角度给的补偿, 一百倍的关系  弹速为15 需要添加一定的偏置, 主要高度不对",
+    "pitch_bias": 150,
+    "#time_bias": "延时击打时间补偿, 单位ms, 可以认为就拨盘的转动时间, 也有是补偿距离解算不准的情况  150    zn4-5m: -160,   wait_time 在420左右可以, 弹速差1m/s, 时间差大概在 20ms 左右",
+    "time_bias": 65,
+    "time_bias_inverse": -100
+  },
+  "#debug": "TODO: 在debug时需要用的参数, 在上场是注意设置enable为false, 内录视频、图片等, 要设置相应参数的true, 即下面的video, armor, 注意自启动时 socket 也要设置为false",
+  "debug": {
+    "#mode": "-1表示键鼠模式, 1表示辅瞄, 2表示前哨站（23赛季）, 3表示半速前哨站（23赛季）, 4表示使用固定ROI进行击打, 5表示原地旋转击打（新版本前哨站）, 6代表绿灯辅助吊射",
+    "mode": -1,
+    "#colod": "自己的颜色，0表示蓝色, 1表示红色",
+    "color": 0,
+    "big_id": -1,
+    "enable": false,
+    "thresh": false,
+    "verbuse": false,
+    "video": false,
+    "armor": false,
+    "save_step": 2,
+    "trajectory": {
+      "distance": false
+    },
+    "coord": false,
+    "shoot_speed": 15.1,
+    "socket": false
+  }
+}
