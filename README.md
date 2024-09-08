@@ -81,6 +81,39 @@ make -j8
 [https://github.com/liulog/Debug_udp_VOFA](https://github.com/liulog/Debug_udp_VOFA)
 4. 使用 jsoncpp 进行配置文件的读取，所有因车而异的参数均可通过配置文件进行调整，所有需要调整的参数见 [src/utils/tools/init.json](src/utils/tools/init.json)
 
+## 文件目录结构 📂
+
+```shell
+.
+├── armor_detector			装甲板检测模块
+│   ├── CMakeLists.txt
+│   ├── include
+│   │   ├── ArmorFinder.h
+│   │   ├── Detector.h
+│   │   ├── Inference.hpp
+│   └── src
+│       ├── ArmorFinder.cpp
+│       ├── Detector.cpp	关键函数（*）
+│       ├── Inference.cpp
+├── AutoAim.cpp				辅瞄主程序
+├── AutoAim.h
+├── driver					相关的驱动代码（相机、串口）
+├── pose_estimate			位姿解算模块（ pnp + 火控）
+│   ├── CMakeLists.txt
+│   ├── include
+│   │   ├── ExtendedKalman.hpp
+│   │   ├── NormalEKF.h
+│   │   ├── PoseSolver.h  关键函数（*）
+│   │   ├── Predictor.h
+│   │   ├── Predictor_main.h
+│   └── src
+│       ├── NormalEKF.cpp
+│       ├── PoseSolver.cpp
+│       ├── Predictor.cpp
+│       └── Predictor_main.cpp
+└── utils					工具模块
+```
+
 ## 重要原理阐述 ♾️
 
 ### 静止靶辅瞄 🎯
@@ -200,7 +233,7 @@ $$
 3. 触发信号的消抖：由于装甲板识别帧率较高，识别过程中可能会在触发边缘反复触发的情况。我们采用和硬件消抖一个原理，设计了一个缓冲区，实现了对触发信号的消抖。（见 [src/pose_estimate/src/PoseSolver.cpp](src/pose_estimate/src/PoseSolver.cpp) 中 `antitop` 函数）
 4. 距离增大带来的挑战：随着距离的增大，深度学习模型对装甲板灯条的识别误差也增大，距离解算的误差增大，计算子弹飞行时间的误差增大，弹道的散布增大。上述问题综合下来，可以得出一个结论，随着距离的增大，击打的准确率会呈指数级的下降。实际测试情况也符合理论分析。我们赛季初设计的最远击打为 9 米，我们通过优化识别模型、优化弹道方程、优化弹道最后实现了 7m 的 80% 命中率，达到了我们的设计指标。（见 [src/armor_detector/src/Detector.cpp](src/armor_detector/src/Detector.cpp) 中识别算法）
 
-## 算法性能、优缺点分析、优化方案 📈
+## 算法性能、优缺点分析 📈
 
 ### 静止靶辅瞄 🎯
 
@@ -245,8 +278,14 @@ $$
 
 <img src="./asset/show.png" style="width: 250px">
 
+## 软件与硬件的系统框图
+![structure.jpg](https://s2.loli.net/2024/09/08/A731ECrIsoSFxYa.jpg)
 
-目前前哨站的方案存在的问题是完全摒弃了先验的参数，造成击打前需要有较长的时间（ 5-7 秒）进行转速的拟合。下赛季可以着力于结合部分先验的转速知识提高拟合前哨站转速的速度。
+## 未来优化方向 🚀
+
+1. 目前我校采用的识别方案和姿态解算方案对于目标的距离解算误差较大，下赛季需要优化识别方案和姿态解算方案，提高对目标的距离解算精度。
+2. 目前我校采用的识别方案对极限角度下的装甲板识别能力较差，无法满足近距离和远距离的辅助吊射需求，下赛季可以结合识别场地其余灯条对整体进行识别和姿态估计。
+3. 目前前哨站的方案存在的问题是完全摒弃了先验的参数，造成击打前需要有较长的时间（ 5-7 秒）进行转速的拟合。下赛季可以着力于结合部分先验的转速知识提高拟合前哨站转速的速度。 
 
 ## 致谢 🙏
 感谢本赛季狼牙战队视觉组和英雄组的所有成员，感谢他们在这个赛季的努力和付出。
