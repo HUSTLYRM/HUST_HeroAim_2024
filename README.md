@@ -61,7 +61,6 @@
 </svg>
 RoboMaster 2024 开源奖 优秀奖
 <svg class="citation-image" version="1.1" id="图层_1" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 84 86" style="enable-background:new 0 0 84 86; width: 5%; fill: #f7c44d" xml:space="preserve">
-#f7c44d
 <g transform="translate(0,-952.36218)">
  <path class="st0" d="M72.5,952.9c1,2.3,0.3,4.4-0.4,6.4c0.7,2.3,1.1,5.7,0.8,8.8c-0.4,3.3-2,6.7-5.1,7.8c-0.8,1.2-1.6,2.3-2.4,3.5
    c1.5-0.8,3.1-1.4,4.6-1.8c2.7-0.8,5.3-1,7.2-1c2.1-0.6,4.1-0.7,5.9-0.7c0.5,0,1,0.5,0.9,1.1c0,0.5-0.5,1-1.1,0.9c-2,0-3.2,0-5,0.6
