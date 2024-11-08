@@ -4,7 +4,9 @@
 <img src="./asset/RoboMaster-mecha-logo.png" width=25% />
 </a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://www.hustlangya.fun">
 <img src="./asset/hustlyrm.png" width=25% />
+</a>
 </div>
 <br>
 <div align="center">
