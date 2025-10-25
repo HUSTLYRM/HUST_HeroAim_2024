@@ -142,7 +142,8 @@ Assuming the projectile is flying in the air, considering air resistance and gra
 
 $$
 m \frac{\mathrm dv_y}{\mathrm dt} = -mg - k_1 v v_y
-$$where $v_y$ is the vertical component of the velocity, $v$ is the magnitude of the velocity, $m$ is the mass, $g$ is the acceleration due to gravity, and $k_1$ is the coefficient related to air resistance.
+$$
+where $v_y$ is the vertical component of the velocity, $v$ is the magnitude of the velocity, $m$ is the mass, $g$ is the acceleration due to gravity, and $k_1$ is the coefficient related to air resistance.
 
 The time of flight is given by the following formula:
 
@@ -163,7 +164,8 @@ The vertical displacement of the projectile is given by the following formula:
 
 $$
 \delta_z = z - \frac{v \cdot \sin(\theta) \cdot T}{\cos(\theta)} + \frac{0.5 \cdot g \cdot T ^ 2}{\cos ^ 2(\theta)}
-$$Where:
+$$
+Where:
 
 - $z$ is the target's height;
 
