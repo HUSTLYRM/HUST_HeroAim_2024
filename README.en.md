@@ -150,6 +150,7 @@ The time of flight is given by the following formula:
 $$
 T = \frac{e ^ {k_1 \cdot d} - 1}{k_1 \cdot v \cdot \cos(\theta)}
 $$
+
 Where:
 
   - $k_1$ is a constant related to the air resistance coefficient;
@@ -165,6 +166,7 @@ The vertical displacement of the projectile is given by the following formula:
 $$
 \delta_z = z - \frac{v \cdot \sin(\theta) \cdot T}{\cos(\theta)} + \frac{0.5 \cdot g \cdot T ^ 2}{\cos ^ 2(\theta)}
 $$
+
 Where:
 
 - $z$ is the target's height;
@@ -178,6 +180,7 @@ Finally, we use the Newton-Raphson method to solve for the pitch angle $\theta$ 
 $$
 \theta_{n+1} = \theta_n - \frac{\delta_z}{f'(\theta)}
 $$
+
 Where $f'(\theta)$ is the derivative of the vertical displacement equation with respect to $\theta$.
 
 When the target's coordinates in the world coordinate system are accurate enough, this equation can fit the flight trajectory of the 42mm projectile very well. In the trajectory equation above, the only constant is the air resistance coefficient. Experiments show that using the volume constant for a sphere yields good results. After further fine-tuning, we slightly reduced this constant, which is related to the dimples on the surface of the large projectile. In practice, under muzzle velocities of 15-16 m/s, the main error in this equation comes from the error in the distance calculation of the armor plate.
@@ -191,6 +194,7 @@ Through the controlled variable study and experiments above, we have a quantitat
 $$
 \boldsymbol P_g=\boldsymbol P_c\boldsymbol R_z(\phi)\boldsymbol R_y(\theta)\boldsymbol R_x(\psi)+\boldsymbol t
 $$
+
 Where:
 
 - $\boldsymbol P_g$ is the coordinate of the armor plate target in the world coordinate system
