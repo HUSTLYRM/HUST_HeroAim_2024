@@ -10,7 +10,8 @@
 </div>
 <br>
 <div align="center">
-<b> 华中科技大学 狼牙战队 视觉组 </b>
+<b> 华中科技大学 狼牙战队 视觉组 </b><br>
+<a href="/README.en.md">English</a>&nbsp;|&nbsp;中文
  </div>
 
 ## 效果展示 🎥
